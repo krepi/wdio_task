@@ -1,3 +1,6 @@
+/**
+ * DataProvider contains the URLs and login data used for testing.
+ */
 const DataProvider = {
     urls: {
         loginPage: 'https://www.saucedemo.com/',
@@ -23,4 +26,3 @@ const DataProvider = {
 };
 
 export default DataProvider;
-
