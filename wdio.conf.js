@@ -71,10 +71,16 @@ export const config = {
     //     }
     // },
         {
-        browserName: 'firefox'
+            browserName: 'firefox',
+            'moz:firefoxOptions': {
+                args: ['-headless']
+            }
     },
         {
-        browserName: 'MicrosoftEdge'
+            browserName: 'MicrosoftEdge',
+            'ms:edgeOptions': {
+                args: ['--headless', '--disable-gpu']
+            }
     }
     ],
 
@@ -148,7 +154,11 @@ export const config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec', ['allure', {outputDir: 'allure-results'}]],
+    reporters: ['spec', ['allure', {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: false,
+    }]],
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
