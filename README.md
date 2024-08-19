@@ -111,8 +111,8 @@ setup_wdio_9/
 1. **Clone the Repository:**
 
    ```bash
-   git clone <repository-url>
-   cd setup_wdio_9
+   git clone https://gitlab.com/krepskiprzemyslaw/final_task
+   cd final_task
    ```
 
 2. **Install Dependencies:**
