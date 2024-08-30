@@ -11,7 +11,8 @@ describe('UC-1: Test Login form with empty credentials', () => {
         // When the user enters credentials and clears the inputs
         await LoginPage.enterUsername(username);
         await LoginPage.enterPassword(password);
-        await LoginPage.clearLoginForm();
+        await LoginPage.clearInput('username');
+        await LoginPage.clearInput('password');
 
         // And submits the login form
         await LoginPage.submitLogin();

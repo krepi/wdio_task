@@ -1,20 +1,26 @@
 import LoginPage from '../../pages/LoginPage.js';
+import InventoryPage from "../../pages/InventoryPage.js";
 import DataProvider from "../../../utils/dataProvider.js";
 
 /**
- * UC-2: Test Login form with credentials by passing Username
+ * UC-3: Test Login form with valid credentials
  */
-describe('UC-2: Test Login form with credentials by passing Username', () => {
-    it('Should validate that the password is required', async () => {
-        const { username, password, expectedError } = DataProvider.loginData['UC-2'];
+describe('UC-3: Test Login form with valid credentials', () => {
+    it('Should log in successfully with valid credentials', async () => {
+        const { username, password } = DataProvider.loginData['UC-3'];
 
-        // When the user enters a username but leaves the password empty
+        // Given the user is on the login page
+
+        // When the user logs in with valid credentials
         await LoginPage.enterUsername(username);
         await LoginPage.enterPassword(password);
+        await LoginPage.submitLogin();
 
-        // Then the system should display an error message indicating that the password is required
-        const errorMessage = await LoginPage.getErrorMessage();
-        expect(errorMessage).toBe(expectedError);
+        // Then the user should be redirected to the inventory page
+        expect(await InventoryPage.isPageDisplayed()).toBe(true);
+
+        // And the header title should display "Swag Labs"
+        const headerTitle = await InventoryPage.header.getLogoText();
+        expect(headerTitle).toBe('Swag Labs');
     });
 });
-

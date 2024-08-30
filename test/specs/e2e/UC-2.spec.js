@@ -15,7 +15,7 @@ describe('UC-2: Test Login form with credentials by passing Username', () => {
 
         // And clears the password input
         await LoginPage.enterPassword(password);
-        await LoginPage.clearPasswordInput();
+        await LoginPage.clearInput('password');
 
         // And submits the login form
         await LoginPage.submitLogin();

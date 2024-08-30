@@ -4,25 +4,18 @@ import LoginForm from '../components/LoginForm.js';
  * LoginPage represents the login page.
  */
 class LoginPage {
+
     /**
-     * Open the login page with the given URL.
-     * @param {string} url - The URL of the login page.
+     * Clear the specified input field.
+     * @param {string} inputType - The type of input to clear ("username" or "password").
      */
-    async open(url) {
-        await browser.url(url);
+    async clearInput(inputType) {
+        if (inputType === 'username') {
+            await LoginForm.clearInput(LoginForm.usernameInput);
+        } else if (inputType === 'password') {
+            await LoginForm.clearInput(LoginForm.passwordInput);
+        }
     }
-
-    /**
-     * Perform a full login with username and password.
-     * @param {string} username - The username to enter.
-     * @param {string} password - The password to enter.
-     */
-    // async fullLogin(username, password) {
-    //     await LoginForm.fillUsername(username);
-    //     await LoginForm.fillPassword(password);
-    //     await LoginForm.clickLogin();
-    // }
-
     /**
      * Enter the username.
      * @param {string} username - The username to enter.
@@ -39,15 +32,6 @@ class LoginPage {
         await LoginForm.fillPassword(password);
     }
 
-    /**
-     * Clear the login form inputs.
-     */
-    async clearLoginForm() {
-        await LoginForm.clearInputs();
-    }
-    async clearPasswordInput(){
-        await LoginForm.clearPasswordInput();
-    }
     /**
      * Get the error message text.
      * @returns {Promise<string>} The error message text.
