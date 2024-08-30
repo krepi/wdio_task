@@ -1,3 +1,5 @@
+import DataProvider from "./utils/dataProvider.js";
+
 export const config = {
     //
     // ====================
@@ -237,7 +239,8 @@ export const config = {
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-    beforeTest: function (test, context) {
+    beforeTest: async function (test, context) {
+        await browser.url(DataProvider.urls.loginPage);
         browser.maximizeWindow();
     },
     /**

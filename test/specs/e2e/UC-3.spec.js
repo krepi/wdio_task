@@ -7,10 +7,9 @@ import DataProvider from "../../../utils/dataProvider.js";
  */
 describe('UC-3: Test Login form with valid credentials', () => {
 
-    beforeEach(async () => {
+
         // Given the user is on the login page
-        await LoginPage.open(DataProvider.urls.loginPage);
-    });
+
 
     it('Should log in successfully with valid credentials', async () => {
         const { username, password } = DataProvider.loginData['UC-3'];
