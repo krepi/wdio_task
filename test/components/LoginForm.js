@@ -37,11 +37,30 @@ class LoginForm {
     }
 
     /**
+     * Fill an input field with the specified value.
+     * @param {WebdriverIO.Element} inputElement - The input element to fill.
+     * @param {string} value - The value to set.
+     */
+    async fillInput(inputElement, value) {
+        await inputElement.setValue(value);
+    }
+
+    /**
+     * Clear an input field using keyboard shortcuts (for different OS).
+     * @param {WebdriverIO.Element} inputElement - The input element to clear.
+     */
+    async clearInput(inputElement) {
+        await inputElement.click();
+        await browser.keys(osType.selectAllShortcut);
+        await browser.keys('Backspace');
+    }
+
+    /**
      * Fill the username input.
      * @param {string} username - The username to enter.
      */
     async fillUsername(username) {
-        await this.usernameInput.setValue(username);
+        await this.fillInput(this.usernameInput, username);
     }
 
     /**
@@ -49,29 +68,22 @@ class LoginForm {
      * @param {string} password - The password to enter.
      */
     async fillPassword(password) {
-        await this.passwordInput.setValue(password);
+        await this.fillInput(this.passwordInput, password);
     }
-
+    /**
+     * Clear  password input.
+     */
+    async clearPasswordInput(){
+        await this.clearInput(this.passwordInput);
+    }
     /**
      * Clear both username and password inputs.
      */
     async clearInputs() {
-        await this.usernameInput.clearValue();
-        await this.passwordInput.clearValue();
+        await this.clearInput(this.usernameInput);
+        await this.clearInput(this.passwordInput);
     }
 
-    /**
-     * Clear inputs using keyboard shortcuts (for different OS).
-     */
-    async clearInputsTyping() {
-        await this.usernameInput.click();
-        await browser.keys(osType.selectAllShortcut);
-        await browser.keys('Backspace');
-
-        await this.passwordInput.click();
-        await browser.keys(osType.selectAllShortcut);
-        await browser.keys('Backspace');
-    }
 
     /**
      * Click the login button.
@@ -85,8 +97,7 @@ class LoginForm {
      * @returns {Promise<string>} The error message text.
      */
     async getErrorMessage() {
-        const errorMessageElement = await this.errorMessage;
-        return await errorMessageElement.getText();
+        return await this.errorMessage.getText();
     }
 }
 

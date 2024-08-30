@@ -17,11 +17,11 @@ class LoginPage {
      * @param {string} username - The username to enter.
      * @param {string} password - The password to enter.
      */
-    async fullLogin(username, password) {
-        await LoginForm.fillUsername(username);
-        await LoginForm.fillPassword(password);
-        await LoginForm.clickLogin();
-    }
+    // async fullLogin(username, password) {
+    //     await LoginForm.fillUsername(username);
+    //     await LoginForm.fillPassword(password);
+    //     await LoginForm.clickLogin();
+    // }
 
     /**
      * Enter the username.
@@ -45,14 +45,9 @@ class LoginPage {
     async clearLoginForm() {
         await LoginForm.clearInputs();
     }
-
-    /**
-     * Clear the login form inputs using keyboard shortcuts.
-     */
-    async clearInputsTyping() {
-        await LoginForm.clearInputsTyping();
+    async clearPasswordInput(){
+        await LoginForm.clearPasswordInput();
     }
-
     /**
      * Get the error message text.
      * @returns {Promise<string>} The error message text.

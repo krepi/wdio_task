@@ -5,13 +5,17 @@ import DataProvider from "../../../utils/dataProvider.js";
  * UC-2: Test Login form with credentials by passing Username
  */
 describe('UC-2: Test Login form with credentials by passing Username', () => {
-    // Given the user is on the login page
-
     it('Should validate that the password is required', async () => {
         const { username, password, expectedError } = DataProvider.loginData['UC-2'];
 
-        // When the user enters a username but leaves the password empty
-        await LoginPage.fullLogin(username, password);
+        // Given the user is on the login page
+
+        // When the user enters a username
+        await LoginPage.enterUsername(username);
+
+        // And clears the password input
+        await LoginPage.enterPassword(password);
+        await LoginPage.clearPasswordInput();
 
         // And submits the login form
         await LoginPage.submitLogin();
@@ -21,3 +25,4 @@ describe('UC-2: Test Login form with credentials by passing Username', () => {
         expect(errorMessage).toBe(expectedError);
     });
 });
+
