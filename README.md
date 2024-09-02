@@ -1,6 +1,6 @@
 
 # Automated Testing Project - WebDriverIO
-# version 0.01.00
+# version 0.01.01
 ## Table of Contents
 
 1. [Introduction](#introduction)
