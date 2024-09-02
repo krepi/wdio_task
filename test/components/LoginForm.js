@@ -70,20 +70,6 @@ class LoginForm {
     async fillPassword(password) {
         await this.fillInput(this.passwordInput, password);
     }
-    /**
-     * Clear  password input.
-     */
-    async clearPasswordInput(){
-        await this.clearInput(this.passwordInput);
-    }
-    /**
-     * Clear both username and password inputs.
-     */
-    async clearInputs() {
-        await this.clearInput(this.usernameInput);
-        await this.clearInput(this.passwordInput);
-    }
-
 
     /**
      * Click the login button.
