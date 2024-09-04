@@ -1,4 +1,4 @@
-import LoginPage from '../../pages/LoginPage.js';
+import loginPage from '../../pages/LoginPage.js';
 import DataProvider from "../../../utils/dataProvider.js";
 
 /**
@@ -9,16 +9,16 @@ describe('UC-1: Test Login form with empty credentials', () => {
         const { username, password, expectedError } = DataProvider.loginData['UC-1'];
 
         // When the user enters credentials and clears the inputs
-        await LoginPage.enterUsername(username);
-        await LoginPage.enterPassword(password);
-        await LoginPage.clearInput('username');
-        await LoginPage.clearInput('password');
+        await loginPage.enterUsername(username);
+        await loginPage.enterPassword(password);
+        await loginPage.clearInput('username');
+        await loginPage.clearInput('password');
 
         // And submits the login form
-        await LoginPage.submitLogin();
+        await loginPage.submitLogin();
 
         // Then the system should display an error message indicating that the username is required
-        const errorMessage = await LoginPage.getErrorMessage();
+        const errorMessage = await loginPage.getErrorMessage();
         expect(errorMessage).toBe(expectedError);
     });
 });

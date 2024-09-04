@@ -1,5 +1,5 @@
-import LoginPage from '../../pages/LoginPage.js';
-import InventoryPage from "../../pages/InventoryPage.js";
+import loginPage from '../../pages/LoginPage.js';
+import inventoryPage from "../../pages/InventoryPage.js";
 import DataProvider from "../../../utils/dataProvider.js";
 
 /**
@@ -12,15 +12,15 @@ describe('UC-3: Test Login form with valid credentials', () => {
         // Given the user is on the login page
 
         // When the user logs in with valid credentials
-        await LoginPage.enterUsername(username);
-        await LoginPage.enterPassword(password);
-        await LoginPage.submitLogin();
+        await loginPage.enterUsername(username);
+        await loginPage.enterPassword(password);
+        await loginPage.submitLogin();
 
         // Then the user should be redirected to the inventory page
-        expect(await InventoryPage.isPageDisplayed()).toBe(true);
+        expect(await inventoryPage.isPageDisplayed()).toBe(true);
 
         // And the header title should display "Swag Labs"
-        const headerTitle = await InventoryPage.header.getLogoText();
+        const headerTitle = await inventoryPage.header.getLogoText();
         expect(headerTitle).toBe('Swag Labs');
     });
 });

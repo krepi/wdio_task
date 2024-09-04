@@ -1,4 +1,4 @@
-import LoginPage from '../../pages/LoginPage.js';
+import loginPage from '../../pages/LoginPage.js';
 import DataProvider from "../../../utils/dataProvider.js";
 
 /**
@@ -11,17 +11,17 @@ describe('UC-2: Test Login form with credentials by passing Username', () => {
         // Given the user is on the login page
 
         // When the user enters a username
-        await LoginPage.enterUsername(username);
+        await loginPage.enterUsername(username);
 
         // And clears the password input
-        await LoginPage.enterPassword(password);
-        await LoginPage.clearInput('password');
+        await loginPage.enterPassword(password);
+        await loginPage.clearInput('password');
 
         // And submits the login form
-        await LoginPage.submitLogin();
+        await loginPage.submitLogin();
 
         // Then the system should display an error message indicating that the password is required
-        const errorMessage = await LoginPage.getErrorMessage();
+        const errorMessage = await loginPage.getErrorMessage();
         expect(errorMessage).toBe(expectedError);
     });
 });
